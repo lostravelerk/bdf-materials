@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
   <title>bdf 贝多芬新材料（湖州）有限公司 — 色彩赋能产品价值</title>
   <meta name="description" content="贝多芬新材料（湖州）有限公司，专注色母粒、功能母粒及高分子材料解决方案，服务于化妆品包装、食品包装、日化、电子电器、汽车等行业。">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=1.1">
 </head>
 <body>
 
@@ -348,14 +349,14 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=1.1"></script>
   <script>
     // Fetch latest articles from novora knowledge base
     (function(){
       const grid = document.getElementById('insights-grid');
       if (!grid) return;
 
-      const FEED_URL = 'https://coadyke.github.io/novora-site/articles/feed.json';
+      const FEED_URL = 'https://coadyke.github.io/novora-site/articles/feed.json?t=' + Date.now();
 
       fetch(FEED_URL)
         .then(r => r.json())
