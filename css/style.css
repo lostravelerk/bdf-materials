@@ -76,23 +76,31 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(170deg, #0F2B52 0%, #1A3F6E 40%, #2D5A9E 100%);
   overflow: hidden;
 }
-.hero::before {
-  content: ''; position: absolute; top: -30%; right: -15%; width: 700px; height: 700px;
-  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
-  border-radius: 50%;
+.hero-glow {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  will-change: transform;
 }
-.hero::after {
-  content: ''; position: absolute; bottom: -20%; left: -10%; width: 500px; height: 500px;
+.hero-glow-1 {
+  top: -30%; right: -15%; width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+}
+.hero-glow-2 {
+  bottom: -20%; left: -10%; width: 500px; height: 500px;
   background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 60%);
-  border-radius: 50%;
 }
 .hero-content {
   position: relative; z-index: 2; max-width: 960px; margin: 0 auto;
   padding: 120px 24px 80px;
 }
-.hero-eyebrow {
-  font-size: 14px; letter-spacing: 3px; color: rgba(255,255,255,0.6);
-  margin-bottom: 24px;
+.hero-eyebrow { animation: fadeUpIn 0.8s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
+.hero h1   { animation: fadeUpIn 0.8s 0.25s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-sub  { animation: fadeUpIn 0.8s 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-sub-en { animation: fadeUpIn 0.8s 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-ctas { animation: fadeUpIn 0.8s 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+
+@keyframes fadeUpIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .hero h1 {
   font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.15;
@@ -420,3 +428,31 @@ a { color: inherit; text-decoration: none; }
   .insight-card { padding: 18px; }
   .insight-title { font-size: 16px; }
 }
+
+/* ═══════════════════════════════════════
+   Dynamic Effects — Scroll + Nav + Counter
+   ═══════════════════════════════════════ */
+
+/* ── Scroll Fade-In ── */
+.anim-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.anim-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Grid children stagger */
+.anim-grid > * { transition-delay: var(--stagger, 0s) !important; }
+
+/* ── Nav Active ── */
+.nav-links a.nav-active {
+  color: var(--bdf);
+  font-weight: 600;
+}
+
+/* ── Counter ── */
+.cap-counter { display: inline-block; }
