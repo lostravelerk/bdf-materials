@@ -361,7 +361,7 @@
       const grid = document.getElementById('insights-grid');
       if (!grid) return;
 
-      const FEED_URL = 'https://novora-site.pages.dev/articles/feed.json?t=' + Date.now();
+      const FEED_URL = './feed.json?t=' + Date.now();
 
       fetch(FEED_URL)
         .then(r => r.json())
